@@ -15,6 +15,8 @@ import com.turf_booking.user_sapi.model.ApiResponse;
 import com.turf_booking.user_sapi.model.UserDetails;
 import com.turf_booking.user_sapi.service.UserService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/user-sapi")
 public class UserController {
@@ -32,7 +34,12 @@ public class UserController {
 		
 		return userService.getUserById(userId);
 	}
-	
+
+	@GetMapping("user/all")
+	public ResponseEntity<ApiResponse<List<UserDetails>>> getAllUsers (){
+		return userService.getAllUsers();
+	}
+
 	@PostMapping("user")
 	public ResponseEntity<ApiResponse<String>> addUser (@RequestBody UserDetails user){
 		
